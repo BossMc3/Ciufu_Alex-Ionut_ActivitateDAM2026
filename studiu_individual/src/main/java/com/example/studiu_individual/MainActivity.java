@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     isAdd = true;
 
                     //Face ca casuta sa se stearga pentru a putea introduce urmatorul numar !
-                    editText.setText("");
+                   editText.setText(editText.getText().toString() + " + ");
                 }
             }
         });
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     isSub = true;
 
 
-                    editText.setText("");
+                    editText.setText(editText.getText().toString() + " - ");
                 }
             }
         });
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     isMul = true;
 
 
-                    editText.setText("");
+                    editText.setText(editText.getText().toString() + " * ");
                 }
             }
         });
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     isDiv = true;
 
 
-                    editText.setText("");
+                    editText.setText(editText.getText().toString() + " / ");
                 }
             }
         });
@@ -141,25 +141,116 @@ public class MainActivity extends AppCompatActivity {
                 if(editText.getText().length() > 0)
                 {
 
-                    num2 = Double.parseDouble(editText.getText().toString());
+                    num2 = Double.parseDouble(editText.getText().toString().split(" ")[2]);
 
                     if(isAdd)
                     {
                         resultText.setText(String.valueOf(num1 + num2));
+                    } else if(isSub)
+                    {
+                        resultText.setText(String.valueOf(num1 - num2));
+                    }
+                    else if(isMul)
+                    {
+                        resultText.setText(String.valueOf(num1 * num2));
+                    }
+                    else if(isDiv) {
+                        if (num2 == 0)
+                            resultText.setText("Error");
+                        else
+                            resultText.setText(String.valueOf(num1 / num2));
                     }
 
-                    // !! De continuat si pentru celelalte operatii !!
-
-
+                    isAdd = false;
+                    isSub = false;
+                    isMul = false;
+                    isDiv = false;
 
                     editText.setText("");
                 }
+
             }
         });
 
-        // !! De facut lisener si pentru butoane pentru a intercepta inputul !!
+        num1Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "1");
+            }
+        });
+
+        num2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "2");
+            }
+        });
+
+        num3Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "3");
+            }
+        });
+
+        num4Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "4");
+            }
+        });
+
+        num5Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "5");
+            }
+        });
+
+        num6Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "6");
+            }
+        });
+
+        num7Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "7");
+            }
+        });
+
+        num8Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "8");
+            }
+        });
+
+        num9Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "9");
+            }
+        });
+
+        zeroBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText(editText.getText().toString() + "0");
+            }
+        });
+
+        dotBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!editText.getText().toString().contains("."))
+                    editText.setText(editText.getText().toString() + ".");
+            }
+        });
 
     }
 }
 
-//Studiu de lucru Individual: Aplicatie-Calculator - Nefinalizat
+//Studiu de lucru Individual: Aplicatie-Calculator - MVP
