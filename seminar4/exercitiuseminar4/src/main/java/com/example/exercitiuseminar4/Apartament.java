@@ -2,7 +2,9 @@ package com.example.exercitiuseminar4;
 
 import androidx.annotation.NonNull;
 
-public class Apartament {
+import java.io.Serializable;
+
+public class Apartament{
     private String adresa;
     private double pretEuro;
     private boolean areParcare;
@@ -26,27 +28,21 @@ public class Apartament {
     public String getAdresa() {
         return adresa;
     }
-
     public double getPretEuro() {
         return pretEuro;
     }
-
     public boolean isAreParcare() {
         return areParcare;
     }
-
     public String getTipCompartimentare() {
         return tipCompartimentare;
     }
-
     public String getCartier() {
         return cartier;
     }
-
     public float getEvaloareStare() {
         return evaloareStare;
     }
-
     public boolean isEsteMobilat() {
         return esteMobilat;
     }

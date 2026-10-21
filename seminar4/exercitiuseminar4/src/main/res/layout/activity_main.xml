@@ -1,102 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    android:orientation="vertical"
+    android:padding="20dp">
+
     <TextView
+        android:id="@+id/tvTitlu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="100dp"></Space>
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CheckBox" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RadioButton" />
-
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="100dp"></Space>
-
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="104dp"
-            android:layout_height="wrap_content"
-            android:text="Switch" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stepSize="0.5" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"></Space>
-
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:text="Gestiune Apartamente"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDeschideAdaugare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incarca Datele" />
+        android:onClick="deschideAdaugareClasic"
+        android:text="Adauga Apartament (Formular Standard)"/>
+
+    <Button
+        android:id="@+id/btnDeschideAdaugareAi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="deschidereAdaugareAi"
+        android:text="Adauga Apartament (Design AI Modern)"/>
+
+    <TextView
+        android:id="@+id/tvRezultatObiect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#F0F0F0"
+        android:padding="16dp"
+        android:text="Nici un apartament adaugat inca."
+        android:textSize="16sp" />
 
 </LinearLayout>
