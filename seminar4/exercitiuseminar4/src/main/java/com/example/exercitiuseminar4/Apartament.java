@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Apartament{
+public class Apartament implements Serializable{
     private String adresa;
     private double pretEuro;
     private boolean areParcare;

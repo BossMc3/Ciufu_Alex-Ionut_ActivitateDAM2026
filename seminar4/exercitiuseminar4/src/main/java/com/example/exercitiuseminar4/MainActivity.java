@@ -30,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
     public final int requestCodeAddAi = 102;
 
     private Button btnToLv;
-
     private TextView tvRezultatObiect;
+
+    private ArrayList<Apartament> listaApartamente = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
         tvRezultatObiect = findViewById(R.id.tvRezultatObiect);
         btnToLv = findViewById(R.id.btnToLv);
+
+        btnToLv.setOnClickListener( v -> {
+            Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+            intent.putExtra("CHEIE_Aprtamente", listaApartamente);
+            startActivity(intent);
+        });
     }
 
     public void deschideAdaugareClasic(View view)
@@ -86,29 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
             Apartament apartament = new Apartament(adresa, pret, areParcare, tipCompartimentare, cartier, evaloareStare, esteMobilat);
 
+            listaApartamente.add(apartament);
+
              tvRezultatObiect.setText(apartament.toString());
              Toast.makeText(this, "Adaugat cu succes: " + apartament.getAdresa(), Toast.LENGTH_SHORT).show();
-
-            ArrayList<String> listaApartamente = new ArrayList<>();
-            listaApartamente.add(apartament.toString());
-
-
-            btnToLv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intet = new Intent(MainActivity.this, ListViewActivity.class);
-                    intet.putStringArrayListExtra("CHEIE_Apartamente", listaApartamente);
-
-                    if(Objects.requireNonNull(intet.getExtras()).isEmpty())
-                    {
-
-                    }
-
-
-                    startActivity(intet);
-                }
-            });
-
 
         }
     }

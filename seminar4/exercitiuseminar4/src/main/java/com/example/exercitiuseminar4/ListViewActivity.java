@@ -2,8 +2,11 @@ package com.example.exercitiuseminar4;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +14,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class ListViewActivity extends AppCompatActivity {
 
     private ListView lvDatePrimite;
+    private ArrayList<Apartament> listaApartamente;
+    private ArrayAdapter<Apartament> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +37,30 @@ public class ListViewActivity extends AppCompatActivity {
 
         Intent intentPrimit = getIntent();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,intentPrimit.getStringArrayExtra("CHEIE_Apartamente"));
+        listaApartamente =  (ArrayList<Apartament>) intentPrimit.getSerializableExtra("CHEIE_Aprtamente");
 
-        lvDatePrimite.setAdapter(arrayAdapter);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaApartamente);
+        lvDatePrimite.setAdapter(adapter);
+
+        lvDatePrimite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Apartament apartamentSelectat = listaApartamente.get(position);
+                Toast.makeText(ListViewActivity.this, apartamentSelectat.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lvDatePrimite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Apartament apartamentSters = listaApartamente.remove(position);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(ListViewActivity.this, "A fost sters: " + apartamentSters.getAdresa(), Toast.LENGTH_SHORT).show();
+                return;
+            }
+        });
+
+
 
     }
 }
