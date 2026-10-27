@@ -30,9 +30,8 @@ public class ListViewActivity extends AppCompatActivity {
 
         Intent intentPrimit = getIntent();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,intentPrimit.getStringArrayExtra("CHEIE_Apartamente"));
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,intentPrimit.getStringArrayListExtra("CHEIE_Apartamente"));
 
         lvDatePrimite.setAdapter(arrayAdapter);
-
     }
 }
