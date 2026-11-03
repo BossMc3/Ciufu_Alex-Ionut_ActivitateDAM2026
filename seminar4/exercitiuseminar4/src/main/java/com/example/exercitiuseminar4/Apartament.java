@@ -1,10 +1,13 @@
 package com.example.exercitiuseminar4;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Apartament implements Serializable{
+public class Apartament implements Parcelable {
     private String adresa;
     private double pretEuro;
     private boolean areParcare;
@@ -24,6 +27,44 @@ public class Apartament implements Serializable{
         this.evaloareStare = _evaloareStare;
         this.esteMobilat = _esteMobilat;
     }
+
+    protected Apartament(Parcel in) {
+        adresa = in.readString();
+        pretEuro = in.readDouble();
+        areParcare = in.readByte() != 0;
+        tipCompartimentare = in.readString();
+        cartier = in.readString();
+        evaloareStare = in.readFloat();
+        esteMobilat = in.readByte() != 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(adresa);
+        dest.writeDouble(pretEuro);
+        dest.writeByte((byte) (areParcare ? 1 : 0));
+        dest.writeString(tipCompartimentare);
+        dest.writeString(cartier);
+        dest.writeFloat(evaloareStare);
+        dest.writeByte((byte) (esteMobilat ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Apartament> CREATOR = new Creator<Apartament>() {
+        @Override
+        public Apartament createFromParcel(Parcel in) {
+            return new Apartament(in);
+        }
+
+        @Override
+        public Apartament[] newArray(int size) {
+            return new Apartament[size];
+        }
+    };
 
     public String getAdresa() {
         return adresa;
@@ -45,6 +86,23 @@ public class Apartament implements Serializable{
     }
     public boolean isEsteMobilat() {
         return esteMobilat;
+    }
+
+
+    public void setDate(String adresa, double pretEuro,
+                        boolean areParcare,
+                        String tipCompartimentare,
+                        String cartier,
+                        float evaloareStare,
+                        boolean esteMobilat) {
+
+        this.adresa = adresa;
+        this.pretEuro = pretEuro;
+        this.areParcare = areParcare;
+        this.tipCompartimentare = tipCompartimentare;
+        this.cartier = cartier;
+        this.evaloareStare = evaloareStare;
+        this.esteMobilat = esteMobilat;
     }
 
     @Override

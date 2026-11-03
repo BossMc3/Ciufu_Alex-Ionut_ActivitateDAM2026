@@ -48,9 +48,12 @@ public class MainActivity extends AppCompatActivity {
         tvRezultatObiect = findViewById(R.id.tvRezultatObiect);
         btnToLv = findViewById(R.id.btnToLv);
 
-        btnToLv.setOnClickListener( v -> {
+        btnToLv.setOnClickListener(v -> {
+
             Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
-            intent.putExtra("CHEIE_Aprtamente", listaApartamente);
+
+            intent.putParcelableArrayListExtra("CHEIE_Aprtamente", listaApartamente);
+
             startActivity(intent);
         });
     }
