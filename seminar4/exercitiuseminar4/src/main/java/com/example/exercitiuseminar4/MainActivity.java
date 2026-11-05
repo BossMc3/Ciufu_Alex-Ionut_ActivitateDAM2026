@@ -82,25 +82,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == requestCodeAdd || requestCode == requestCodeAddAi)
-        {
-            Bundle bundle = data.getExtras();
+        if (resultCode == RESULT_OK && data != null) {
+            if (requestCode == requestCodeAdd || requestCode == requestCodeAddAi) {
+                Bundle bundle = data.getExtras();
+                if (bundle != null) {
+                    String adresa = bundle.getString("cheie_adresa", "");
+                    double pret = bundle.getDouble("cheie_pret", 0.0);
+                    boolean areParcare = bundle.getBoolean("cheie_parcare", false);
+                    String tipCompartimentare = bundle.getString("cheie_compartimentare", "");
+                    String cartier = bundle.getString("cheie_cartier", "");
+                    float evaloareStare = bundle.getFloat("cheie_evaloare", 0.0f);
+                    boolean esteMobilat = bundle.getBoolean("cheie_mobilat", false);
 
-            String adresa = bundle.getString("cheie_adresa", "");
-            double pret = bundle.getDouble("cheie_pret", 0.0);
-            boolean areParcare = bundle.getBoolean("cheie_parcare", false);
-            String tipCompartimentare = bundle.getString("cheie_compartimentare", "");
-            String cartier = bundle.getString("cheie_cartier", "");
-            float evaloareStare = bundle.getFloat("cheie_evaloare", 0.0f);
-            boolean esteMobilat = bundle.getBoolean("cheie_mobilat", false);
+                    Apartament apartament = new Apartament(adresa, pret, areParcare, tipCompartimentare, cartier, evaloareStare, esteMobilat);
+                    listaApartamente.add(apartament);
 
-            Apartament apartament = new Apartament(adresa, pret, areParcare, tipCompartimentare, cartier, evaloareStare, esteMobilat);
-
-            listaApartamente.add(apartament);
-
-             tvRezultatObiect.setText(apartament.toString());
-             Toast.makeText(this, "Adaugat cu succes: " + apartament.getAdresa(), Toast.LENGTH_SHORT).show();
-
+                    tvRezultatObiect.setText(apartament.toString());
+                    Toast.makeText(this, "Adaugat cu succes: " + apartament.getAdresa(), Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 }

@@ -37,10 +37,9 @@ public class ApartamentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_aprtament, parent, false);
-
+        }
 
         Apartament apartament = listaApartamente.get(position);
 
@@ -50,11 +49,8 @@ public class ApartamentAdapter extends BaseAdapter {
         TextView tvDetalii = convertView.findViewById(R.id.tvDetalii);
 
         tvAdresa.setText(apartament.getAdresa());
-
         tvPret.setText("Pret: " + apartament.getPretEuro() + " euro");
-
         tvCartier.setText("Cartier: " + apartament.getCartier());
-
         tvDetalii.setText(
                 "Parcare: " + (apartament.isAreParcare() ? "Da" : "Nu") +
                         "\nCompartimentare: " + apartament.getTipCompartimentare() +
